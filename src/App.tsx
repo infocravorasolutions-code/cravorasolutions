@@ -1,148 +1,136 @@
-import React, { useEffect } from 'react';
-import { Lenis } from '@studio-freight/react-lenis';
-import { Header } from './components/layout/Header';
-import { Footer } from './components/layout/Footer';
-import { Hero } from './components/sections/Hero';
-import { Capabilities } from './components/sections/Capabilities';
-import { Portfolio } from './components/sections/Portfolio';
-import { Process } from './components/sections/Process';
-import { TechStack } from './components/sections/TechStack';
-import { Testimonials } from './components/sections/Testimonials';
-import { About } from './components/sections/About';
-import { CTA } from './components/sections/CTA';
-import { useReducedMotion } from './hooks/usePerformanceMode';
+import React, { Suspense, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useSmoothScroll } from './hooks/useSmoothScroll';
+import { usePerformanceMode } from './hooks/usePerformanceMode';
+import { Settings } from 'lucide-react';
+import { Layout } from './components/ui/Layout';
+import { ErrorBoundary } from './components/ui/ErrorBoundary';
+import { NotFound } from './components/ui/NotFound';
+
+// Core Pages
+import { Home } from './pages/Home';
+import { AboutUs } from './sections/AboutUs';
+import { Careers } from './sections/Careers';
+import { Blog } from './sections/Blog';
+import { BlogDetail } from './components/blog/BlogDetail';
+import { Contact } from './pages/Contact';
+
+// Custom Pages
+import { OurProcess } from './pages/OurProcess';
+import { Portfolio } from './pages/Portfolio';
+
+// Services
+import { WebAppDev } from './pages/services/WebAppDev';
+import { MobileAppDev } from './pages/services/MobileAppDev';
+import { SaaSDevelopment } from './pages/services/SaaSDevelopment';
+import { AiAutomation } from './pages/services/AiAutomation';
+import { MvpDevelopment } from './pages/services/MvpDevelopment';
+
+// Industries
+import { Fintech } from './pages/industries/Fintech';
+import { Healthcare } from './pages/industries/Healthcare';
+import { Ecommerce } from './pages/industries/Ecommerce';
+
+// Generated Dynamic Pages (Placeholders)
+import { EdTech } from './pages/industries/EdTech';
+import { RealEstate } from './pages/industries/RealEstate';
+
+// New Bespoke Pages
+import { TeamPage } from './pages/Team';
+import { TestimonialsPage } from './pages/Testimonials';
+import { CaseStudiesPage } from './pages/CaseStudies';
+import { ProjectEstimatorPage } from './pages/ProjectEstimator';
+
+// Loading component
+const LoadingScreen = () => (
+  <div className="fixed inset-0 bg-white flex items-center justify-center z-50">
+    <div className="text-center">
+      <div className="w-16 h-16 border-4 border-brand border-t-transparent rounded-full animate-spin mb-4 mx-auto"></div>
+      <p className="text-gray-900 font-heading">Loading Cravora Solutions...</p>
+    </div>
+  </div>
+);
+
+// Performance toggle component
+const PerformanceToggle = () => {
+  const { isLiteMode, toggleLiteMode } = usePerformanceMode();
+
+  if (import.meta.env.PROD) return null; // Hide in production
+
+  return (
+    <div className="fixed bottom-4 right-4 z-50">
+      {/* <button
+        onClick={toggleLiteMode}
+        className={`p-3 rounded-full shadow-lg transition-all duration-300 ${isLiteMode
+          ? 'bg-green-500 hover:bg-green-600 text-white'
+          : 'bg-gray-800 hover:bg-gray-700 text-white'
+          }`}
+      // title={isLiteMode ? 'Performance Mode: ON' : 'Performance Mode: OFF'}
+      >
+        <Settings className="w-5 h-5" />
+      </button> */}
+    </div>
+  );
+};
 
 function App() {
-  const prefersReducedMotion = useReducedMotion();
+  useSmoothScroll();
 
   useEffect(() => {
-    // Load Google Fonts with display=swap for performance
+    // Preload critical resources
     const link = document.createElement('link');
-    link.href = 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap';
-    link.rel = 'stylesheet';
+    link.rel = 'preload';
+    link.href = 'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap';
+    link.as = 'style';
     document.head.appendChild(link);
-
-    // Enhanced SEO meta tags
-    document.title = 'Cravora Solutions - Ship Faster. Smarter. Safer. | Professional Tech Agency';
-    
-    const metaDescription = document.querySelector('meta[name="description"]') || document.createElement('meta');
-    metaDescription.setAttribute('name', 'description');
-    metaDescription.setAttribute('content', 'Professional tech agency specializing in 3D web development, mobile apps, cloud solutions, and AI/ML integrations. We ship with confidence. 99.9% uptime. 150+ projects delivered.');
-    if (!document.querySelector('meta[name="description"]')) {
-      document.head.appendChild(metaDescription);
-    }
-
-    // Keywords meta tag
-    const metaKeywords = document.createElement('meta');
-    metaKeywords.setAttribute('name', 'keywords');
-    metaKeywords.setAttribute('content', 'web development, mobile apps, cloud solutions, AI ML, three.js, react development, enterprise software, tech agency, 3D web, professional development');
-    document.head.appendChild(metaKeywords);
-
-    // Open Graph meta tags
-    const ogTitle = document.createElement('meta');
-    ogTitle.setAttribute('property', 'og:title');
-    ogTitle.setAttribute('content', 'Cravora Solutions - Professional Tech Agency');
-    document.head.appendChild(ogTitle);
-
-    const ogDescription = document.createElement('meta');
-    ogDescription.setAttribute('property', 'og:description');
-    ogDescription.setAttribute('content', 'We build exceptional digital experiences with cutting-edge technology and proven processes. Ship faster, smarter, safer.');
-    document.head.appendChild(ogDescription);
-
-    const ogType = document.createElement('meta');
-    ogType.setAttribute('property', 'og:type');
-    ogType.setAttribute('content', 'website');
-    document.head.appendChild(ogType);
-
-    const ogImage = document.createElement('meta');
-    ogImage.setAttribute('property', 'og:image');
-    ogImage.setAttribute('content', 'https://images.pexels.com/photos/730547/pexels-photo-730547.jpeg?auto=compress&cs=tinysrgb&w=1200');
-    document.head.appendChild(ogImage);
-
-    // Twitter Card meta tags
-    const twitterCard = document.createElement('meta');
-    twitterCard.setAttribute('name', 'twitter:card');
-    twitterCard.setAttribute('content', 'summary_large_image');
-    document.head.appendChild(twitterCard);
-
-    // JSON-LD Schema markup
-    const schemaScript = document.createElement('script');
-    schemaScript.type = 'application/ld+json';
-    schemaScript.innerHTML = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Cravora Solutions",
-      "description": "Professional tech agency specializing in web development, mobile apps, cloud solutions, and AI/ML integrations.",
-      "url": "https://cravora.com",
-      "logo": "https://cravora.com/logo.png",
-      "foundingDate": "2020",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "San Francisco",
-        "addressRegion": "CA",
-        "addressCountry": "US"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+1-555-123-4567",
-        "contactType": "customer service",
-        "email": "hello@cravora.com"
-      },
-      "sameAs": [
-        "https://github.com/cravora",
-        "https://linkedin.com/company/cravora",
-        "https://twitter.com/cravora"
-      ],
-      "offers": {
-        "@type": "Service",
-        "name": "Web Development Services",
-        "description": "Professional web development, mobile apps, and cloud solutions"
-      }
-    });
-    document.head.appendChild(schemaScript);
-
-    // Viewport meta tag for mobile optimization
-    const viewport = document.querySelector('meta[name="viewport"]') || document.createElement('meta');
-    viewport.setAttribute('name', 'viewport');
-    viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=5.0');
-    if (!document.querySelector('meta[name="viewport"]')) {
-      document.head.appendChild(viewport);
-    }
-
-    return () => {
-      document.head.removeChild(link);
-    };
   }, []);
 
   return (
-    <Lenis 
-      smooth 
-      duration={1.2}
-      easing={(t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t))}
-      direction="vertical"
-      gestureDirection="vertical"
-      smoothTouch={false}
-      touchMultiplier={2}
-      wheelMultiplier={1}
-      infinite={false}
-    >
-      <div className="min-h-screen bg-white">
-        <Header />
-        
-        <main>
-          <Hero />
-          <Capabilities />
-          <Portfolio />
-          <Process />
-          <TechStack />
-          <Testimonials />
-          <About />
-          <CTA />
-        </main>
-        
-        <Footer />
-      </div>
-    </Lenis>
+    <ErrorBoundary>
+      <Router>
+        <div className="min-h-screen bg-background text-foreground overflow-x-hidden font-body">
+          <Suspense fallback={<LoadingScreen />}>
+            <PerformanceToggle />
+            <Routes>
+              {/* Top level routes */}
+              <Route path="/" element={<Layout><Home /></Layout>} />
+              <Route path="/about" element={<Layout><AboutUs /></Layout>} />
+              <Route path="/careers" element={<Layout><Careers /></Layout>} />
+              <Route path="/contact" element={<Layout><Contact /></Layout>} />
+
+              {/* Services */}
+              <Route path="/services/web-application-development" element={<Layout><WebAppDev /></Layout>} />
+              <Route path="/services/mobile-app-development" element={<Layout><MobileAppDev /></Layout>} />
+              <Route path="/services/saas-development" element={<Layout><SaaSDevelopment /></Layout>} />
+              <Route path="/services/ai-automation-solutions" element={<Layout><AiAutomation /></Layout>} />
+              <Route path="/services/mvp-development" element={<Layout><MvpDevelopment /></Layout>} />
+
+              {/* Industries */}
+              <Route path="/industries/fintech" element={<Layout><Fintech /></Layout>} />
+              <Route path="/industries/healthcare" element={<Layout><Healthcare /></Layout>} />
+              <Route path="/industries/ecommerce" element={<Layout><Ecommerce /></Layout>} />
+              <Route path="/industries/edtech" element={<Layout><EdTech /></Layout>} />
+              <Route path="/industries/real-estate" element={<Layout><RealEstate /></Layout>} />
+
+              {/* About subpages & Portfolio */}
+              <Route path="/about/our-process" element={<Layout><OurProcess /></Layout>} />
+              <Route path="/about/team" element={<Layout><TeamPage /></Layout>} />
+              <Route path="/about/testimonials" element={<Layout><TestimonialsPage /></Layout>} />
+              <Route path="/portfolio" element={<Layout><Portfolio /></Layout>} />
+
+              {/* Resources */}
+              <Route path="/blog" element={<Layout><Blog /></Layout>} />
+              <Route path="/blog/:slug" element={<Layout><BlogDetail /></Layout>} />
+              <Route path="/case-studies" element={<Layout><CaseStudiesPage /></Layout>} />
+              <Route path="/tools/project-cost-estimator" element={<Layout><ProjectEstimatorPage /></Layout>} />
+
+              {/* 404 */}
+              <Route path="*" element={<Layout><NotFound /></Layout>} />
+            </Routes>
+          </Suspense>
+        </div>
+      </Router>
+    </ErrorBoundary>
   );
 }
 
