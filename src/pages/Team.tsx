@@ -5,14 +5,14 @@ import { SEO } from '../components/SEO';
 const founders = [
   {
     name: 'Darshan Patel',
-    role: 'Founder & CEO',
+    role: 'Founder & CTO',
     bio: 'Darshan is a technology veteran with a background in product strategy and engineering. He leads Cravora\'s client strategy and business development, ensuring every project aligns with business goals. He is passionate about making enterprise-grade engineering accessible to startups.',
     image: '/brand/Darshan-profile.jpeg',
     linkedin: 'https://www.linkedin.com/in/darshan-patel-392900223/',
   },
   {
     name: 'Mohit Rathhod',
-    role: 'Co-Founder & CTO',
+    role: 'Co-Founder & CEO',
     bio: 'Mohit is our Chief Technology Officer, responsible for technical architecture and engineering standards. With extensive experience in backend systems and cloud infrastructure, Mohit oversees the architecture of every major engagement to ensure scalability and performance.',
     image: '/brand/mohit-profile.jpg',
     linkedin: 'https://www.linkedin.com/in/mohit-rathod-54a742217/',
