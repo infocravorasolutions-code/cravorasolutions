@@ -6,9 +6,11 @@ export const MvpDevelopment: React.FC = () => {
     <DetailedServiceTemplate
       seoTitle="MVP Development Services | Launch in 6–8 Weeks | Cravora Solutions"
       seoDescription="Cravora builds lean, market-ready MVPs for startups and founders. Go from idea to your first real users in as little as 6–8 weeks with our proven MVP development process."
+      canonicalPath="/services/mvp-development"
       heroSubtitle="MVP Development"
       heroTitle="From Idea to Market-Ready MVP in 6–8 Weeks"
       heroDescription="Stop planning and start learning. Our lean MVP development process helps founders and startups validate their idea with real users, real data, and real feedback — before committing to full-scale development."
+      answerSummary="MVP (Minimum Viable Product) development is the strategic creation of a core software product with essential features designed to validate user demand rapidly. Cravora Solutions delivers production-grade web and mobile MVPs in 6 to 8 weeks, helping founders launch faster, gain real user feedback, and secure investor funding."
       problemTitle="Why Most Startups Over-Build Before They Validate"
       problemContent={
         <>

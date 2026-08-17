@@ -6,9 +6,11 @@ export const MobileAppDev: React.FC = () => {
     <DetailedServiceTemplate
       seoTitle="Mobile App Development Services | iOS & Android | Cravora Solutions"
       seoDescription="Cravora builds native and cross-platform mobile apps for iOS and Android. From consumer apps to enterprise mobility solutions — we deliver mobile experiences users love."
+      canonicalPath="/services/mobile-app-development"
       heroSubtitle="Mobile App Development"
       heroTitle="Mobile Apps That Users Download — and Actually Keep Using"
       heroDescription="We build iOS and Android applications that combine beautiful design with rock-solid engineering — delivering mobile experiences that retain users, drive engagement, and grow your business."
+      answerSummary="Mobile app development is the creation of software applications designed to run natively or cross-platform on smartphones and mobile devices. Cravora Solutions specializes in Flutter and React Native cross-platform app engineering, producing high-performance iOS and Android apps with offline synchronization, real-time push notifications, and secure mobile payment gateways."
       problemTitle="Why Most Mobile Apps Fail to Gain Traction"
       problemContent={
         <>

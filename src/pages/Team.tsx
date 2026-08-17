@@ -5,7 +5,7 @@ import { SEO } from '../components/SEO';
 const founders = [
   {
     name: 'Darshan Patel',
-    role: 'Co-Founder & CEO',
+    role: 'Founder & CEO',
     bio: 'Darshan is a technology veteran with a background in product strategy and engineering. He leads Cravora\'s client strategy and business development, ensuring every project aligns with business goals. He is passionate about making enterprise-grade engineering accessible to startups.',
     image: '/brand/Darshan-profile.jpeg',
     linkedin: 'https://www.linkedin.com/in/darshan-patel-392900223/',
@@ -23,19 +23,26 @@ const founders = [
     bio: 'Dev leads operations and product at Cravora, ensuring that every product we ship meets the highest standards of user experience and visual craft. He is the internal champion for our quality-first culture and seamless project delivery.',
     image: '/brand/Dev-profile.jpg',
     linkedin: 'https://www.linkedin.com/in/dev-patel-b54133221/',
+  },
+  {
+    name: 'Ankit Soni',
+    role: 'Sales Head',
+    bio: 'Ankit leads sales growth and strategic client partnerships at Cravora. He works closely with founders and businesses to identify technology opportunities, drive expansion, and ensure client success.',
+    image: '/brand/Ankit-profile.jpg',
+    linkedin: 'https://www.linkedin.com/in/ankit-soni-53b088127/',
   }
 ];
 
 export const TeamPage: React.FC = () => {
   return (
     <>
-      <SEO 
-        title="Meet the Team | Our Founders & Engineering Leadership | Cravora Solutions" 
-        description="Meet the people behind Cravora Solutions — experienced founders and engineers committed to building exceptional software." 
+      <SEO
+        title="Meet the Team | Our Founders & Leadership | Cravora Solutions"
+        description="Meet the people behind Cravora Solutions — experienced founders and leaders committed to building exceptional software."
       />
-      
+
       <div className="w-full pt-20 bg-[#fafafa]">
-        
+
         {/* HERO */}
         <section className="relative py-20 overflow-hidden text-center">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -43,37 +50,39 @@ export const TeamPage: React.FC = () => {
               The People Who Build Your Product
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 leading-relaxed font-medium">
-              Cravora is built by builders. Our founding team brings deep engineering expertise, product intuition, and a genuine passion for solving hard problems.
+              Cravora is built by builders. Our team brings deep engineering expertise, product intuition, and a genuine passion for solving hard problems.
             </p>
           </div>
         </section>
 
-        {/* FOUNDERS GRID */}
+        {/* FOUNDERS & LEADERSHIP GRID */}
         <section className="py-20 bg-white">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {founders.map((founder, index) => (
                 <div key={index} className="group">
                   <div className="relative mb-8 rounded-3xl overflow-hidden aspect-[4/5] bg-gray-100 shadow-xl shadow-purple-500/5 group-hover:shadow-purple-500/10 transition-all duration-500">
-                    <img 
-                      src={founder.image} 
-                      alt={founder.name} 
+                    <img
+                      src={founder.image}
+                      alt={founder.name}
                       className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                      <a 
-                        href={founder.linkedin} 
-                        target="_blank" 
-                        rel="noreferrer" 
-                        className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#853ae8] transition-colors duration-300"
-                      >
-                        <Linkedin className="w-6 h-6" />
-                      </a>
-                    </div>
+                    {founder.linkedin && founder.linkedin !== '#' && (
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                        <a
+                          href={founder.linkedin}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#853ae8] transition-colors duration-300"
+                        >
+                          <Linkedin className="w-6 h-6" />
+                        </a>
+                      </div>
+                    )}
                   </div>
                   <h2 className="text-2xl font-bold mb-1" style={{ color: '#111' }}>{founder.name}</h2>
                   <p className="text-[#853ae8] font-bold text-sm uppercase tracking-widest mb-4">{founder.role}</p>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed text-sm">
                     {founder.bio}
                   </p>
                 </div>

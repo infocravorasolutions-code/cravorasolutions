@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowRight, ChevronDown, CheckCircle2 } from 'lucide-react';
 import { SEO } from '../SEO';
+import { getServiceSchema, getFAQSchema, getBreadcrumbSchema } from '../../utils/schemaData';
 
 interface FaqItem {
   question: string;
@@ -13,6 +14,8 @@ export interface DetailedServiceTemplateProps {
   heroTitle: string;
   heroSubtitle?: string;
   heroDescription: string;
+  answerSummary?: string; // Direct Answer block for AEO / GEO
+  canonicalPath?: string;
   buildSectionTitle: string;
   buildItems: string[];
   secondarySectionTitle?: string;
@@ -33,6 +36,8 @@ export const DetailedServiceTemplate: React.FC<DetailedServiceTemplateProps> = (
   heroTitle,
   heroSubtitle,
   heroDescription,
+  answerSummary,
+  canonicalPath,
   buildSectionTitle,
   buildItems,
   secondarySectionTitle,
@@ -48,9 +53,33 @@ export const DetailedServiceTemplate: React.FC<DetailedServiceTemplateProps> = (
 }) => {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
+  const schemas: object[] = [];
+  if (heroSubtitle) {
+    schemas.push(getServiceSchema(heroSubtitle, seoDescription, canonicalPath || ''));
+  }
+  if (faqs && faqs.length > 0) {
+    schemas.push(getFAQSchema(faqs));
+  }
+  if (canonicalPath) {
+    schemas.push(
+      getBreadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Services', url: '/#services' },
+        { name: heroSubtitle || heroTitle, url: canonicalPath },
+      ])
+    );
+  }
+
+  const fullCanonicalUrl = canonicalPath ? `https://cravorasolutions.com${canonicalPath}` : undefined;
+
   return (
     <>
-      <SEO title={seoTitle} description={seoDescription} />
+      <SEO 
+        title={seoTitle} 
+        description={seoDescription} 
+        canonical={fullCanonicalUrl}
+        schema={schemas}
+      />
       
       <div className="w-full pt-20 bg-[#fafafa]">
         
@@ -66,9 +95,22 @@ export const DetailedServiceTemplate: React.FC<DetailedServiceTemplateProps> = (
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-8" style={{ color: '#111' }}>
               {heroTitle}
             </h1>
-            <p className="text-xl md:text-2xl text-gray-600 leading-relaxed font-medium">
+            <p className="text-xl md:text-2xl text-gray-600 leading-relaxed font-medium mb-6">
               {heroDescription}
             </p>
+
+            {/* Direct Answer Block (AEO / GEO) */}
+            {answerSummary && (
+              <div className="mt-8 p-6 rounded-2xl bg-white border border-[#eadafd] text-left shadow-sm">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#853ae8] mb-2">
+                  <span className="w-2 h-2 rounded-full bg-[#853ae8]"></span>
+                  Direct Overview
+                </div>
+                <p className="text-base text-gray-700 leading-relaxed font-normal">
+                  {answerSummary}
+                </p>
+              </div>
+            )}
           </div>
         </section>
 
@@ -114,7 +156,7 @@ export const DetailedServiceTemplate: React.FC<DetailedServiceTemplateProps> = (
                 </h2>
                 <div className="space-y-4">
                   {buildItems.map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-4 p-5 rounded-2xl border border-gray-100 bg-[#fafafa] hover:border-[#853ae8] hover:shadow-sm transition-all">
+                    <div key={idx} className="flex items-start gap-4 p-5 rounded-2xl border border-gray-100 bg-white hover:border-[#853ae8] hover:shadow-sm transition-all">
                       <CheckCircle2 className="w-6 h-6 text-[#853ae8] flex-shrink-0 mt-0.5" />
                       <span className="text-gray-700 font-medium text-lg leading-relaxed">{item}</span>
                     </div>
@@ -136,7 +178,7 @@ export const DetailedServiceTemplate: React.FC<DetailedServiceTemplateProps> = (
                 )}
 
                 {techStack && techStack.length > 0 && (
-                  <div className="bg-[#fafafa] p-8 rounded-3xl border border-[#f0e8fc]">
+                  <div className="bg-white p-8 rounded-3xl border border-[#f0e8fc]">
                     <h2 className="text-xl font-bold mb-6" style={{ color: '#111' }}>
                       Our Tech Stack
                     </h2>

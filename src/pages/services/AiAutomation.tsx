@@ -6,9 +6,11 @@ export const AiAutomation: React.FC = () => {
     <DetailedServiceTemplate
       seoTitle="AI & Automation Solutions | Custom AI Development | Cravora Solutions"
       seoDescription="Cravora builds custom AI integrations, LLM-powered tools, intelligent chatbots, and workflow automation solutions that make your product and operations smarter."
+      canonicalPath="/services/ai-automation-solutions"
       heroSubtitle="AI & Automation"
       heroTitle="AI & Automation That Solves Real Business Problems"
       heroDescription="We go beyond the AI hype to build practical, production-ready artificial intelligence solutions — from intelligent chatbots and document processing to full workflow automation — that deliver measurable ROI."
+      answerSummary="AI and automation solutions involve embedding Artificial Intelligence models (such as OpenAI GPT-4, Claude, and RAG architectures) into business workflows and software applications. Cravora Solutions engineers custom LLM integrations, retrieval-augmented generation systems, document processing pipelines, and automated agent workflows."
       problemTitle="The Gap Between AI Potential and AI Reality"
       problemContent={
         <>

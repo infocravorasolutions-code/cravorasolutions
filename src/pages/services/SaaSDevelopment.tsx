@@ -6,9 +6,11 @@ export const SaaSDevelopment: React.FC = () => {
     <DetailedServiceTemplate
       seoTitle="SaaS Development Services | Build Your SaaS Product | Cravora Solutions"
       seoDescription="Cravora builds scalable, multi-tenant SaaS products from concept to launch. Expert SaaS architecture, subscription billing, and cloud deployment for founders and enterprises."
+      canonicalPath="/services/saas-development"
       heroSubtitle="SaaS Development"
       heroTitle="Build a SaaS Product That Scales From Day One"
       heroDescription="We help founders and enterprises design, build, and launch SaaS platforms with the architecture, billing infrastructure, and cloud scalability needed to grow from 10 users to 100,000."
+      answerSummary="SaaS (Software as a Service) development is the end-to-end engineering of cloud-hosted, multi-tenant subscription applications. Cravora Solutions designs and deploys scalable SaaS platforms featuring robust multi-tenancy, Stripe subscription management, role-based access controls, and automated user onboarding."
       problemTitle="Why SaaS Products Fail Before They Scale"
       problemContent={
         <>

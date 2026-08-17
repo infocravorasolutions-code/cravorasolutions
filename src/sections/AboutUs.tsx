@@ -209,23 +209,24 @@ export const AboutUs: React.FC = () => {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-5" style={{ background: '#f3eafd', color: '#853ae8' }}>
-                The Founders
+                Leadership Team
               </div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6" style={{ color: '#111' }}>
                 Meet the minds behind Cravora
               </h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
                 { name: 'Darshan Patel', role: 'Founder', img: '/brand/Darshan-profile.jpeg' },
                 { name: 'Mohit Rathhod', role: 'Co-Founder & CTO', img: '/brand/mohit-profile.jpg' },
                 { name: 'Dev Patel', role: 'COO', img: '/brand/Dev-profile.jpg', pos: 'top' },
+                { name: 'Ankit Soni', role: 'Sales Head', img: '/brand/Ankit-profile.jpg' },
               ].map((m) => (
                 <div key={m.name} className="group">
                   <div className="relative mb-6 overflow-hidden rounded-3xl aspect-[4/5]">
                     <img src={m.img} alt={m.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" style={{ objectPosition: m.pos || 'center' }} />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-1"  >{m.name}</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-1">{m.name}</h3>
                   <p className="text-[#853ae8] font-semibold text-sm">{m.role}</p>
                 </div>
               ))}

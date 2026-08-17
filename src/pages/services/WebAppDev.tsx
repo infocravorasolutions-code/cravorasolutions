@@ -6,9 +6,11 @@ export const WebAppDev: React.FC = () => {
     <DetailedServiceTemplate
       seoTitle="Web Application Development Services | Cravora Solutions"
       seoDescription="Cravora builds fast, scalable, and secure web applications for startups and enterprises. From dashboards to enterprise portals — we deliver full-stack web development that drives results."
+      canonicalPath="/services/web-application-development"
       heroSubtitle="Web Application Development"
       heroTitle="Custom Web Application Development Built to Scale"
       heroDescription="We design and engineer web applications that go beyond aesthetics — delivering performance, security, and business logic that your users and your operations depend on."
+      answerSummary="Custom web application development is the process of designing, building, and deploying tailored web software to automate business operations or power digital products. Cravora Solutions engineers high-performance web applications using React, Next.js, and Node.js, providing end-to-end security, seamless API integration, and cloud scalability."
       problemTitle="The Challenges Businesses Face With Web Development"
       problemContent={
         <>

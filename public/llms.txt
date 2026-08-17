@@ -1,0 +1,34 @@
+# Cravora Solutions
+
+> Cravora Solutions is a custom software development company based in Ahmedabad, Gujarat, India. We build high-performance web applications, mobile apps, SaaS MVPs, and AI/automation integrations for startups and enterprises across 12+ countries.
+
+## Core Services
+
+- Web Application Development: Custom full-stack web applications using React, Next.js, Node.js, and Cloud Infrastructure. (https://cravorasolutions.com/services/web-application-development)
+- Mobile App Development: Cross-platform iOS and Android apps using React Native and Flutter. (https://cravorasolutions.com/services/mobile-app-development)
+- SaaS Development & MVP Builder: Rapid 6-8 week MVP design, development, and launch for tech founders. (https://cravorasolutions.com/services/saas-development)
+- AI & Automation Solutions: Custom LLM integrations, OpenAI GPT-4 API workflows, and workflow automation. (https://cravorasolutions.com/services/ai-automation-solutions)
+- MVP Development: Lean, scalable software MVPs engineered for early traction and investor pitch readiness. (https://cravorasolutions.com/services/mvp-development)
+
+## Key Information
+
+- Location: Ahmedabad, Gujarat, India (380015)
+- Email: info@cravorasolutions.com
+- Website: https://cravorasolutions.com
+- Delivery Stats: 50+ projects shipped, 98% on-time delivery rate, clients across 12 countries.
+
+## Leadership & Founding Team
+
+- Darshan Patel — Founder & CEO (Client Strategy & Product Architecture)
+- Mohit Rathhod — Co-Founder & CTO (Engineering & Cloud Architecture)
+- Dev Patel — Co-Founder & Head of Operations (Operations & Quality Engineering)
+- Ankit Soni — Sales Head (Strategic Growth & Client Partnerships)
+
+## Key Pages & Resources
+
+- About Us: https://cravorasolutions.com/about
+- Leadership & Team: https://cravorasolutions.com/about/team
+- Development Process: https://cravorasolutions.com/about/our-process
+- Portfolio & Case Studies: https://cravorasolutions.com/portfolio
+- Project Cost Estimator: https://cravorasolutions.com/tools/project-cost-estimator
+- Engineering Blog: https://cravorasolutions.com/blog

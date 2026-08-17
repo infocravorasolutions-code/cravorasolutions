@@ -8,6 +8,7 @@ import { FAQ } from '../sections/FAQ';
 import { CTA } from '../sections/CTA';
 import { BrandMarquee } from '../components/ui/BrandMarquee';
 import { SEO } from '../components/SEO';
+import { getOrganizationSchema } from '../utils/schemaData';
 
 export const Home: React.FC = () => {
   return (
@@ -15,6 +16,8 @@ export const Home: React.FC = () => {
       <SEO 
         title="Custom Software Development Company for Startups & SMBs" 
         description="Cravora Solutions builds custom web apps, mobile apps, SaaS products, and AI tools for startups and SMBs globally. 50+ projects, 12+ countries. Book a free discovery call." 
+        canonical="https://cravorasolutions.com/"
+        schema={getOrganizationSchema()}
       />
       <Hero />
       <BrandMarquee />
